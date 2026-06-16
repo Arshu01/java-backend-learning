@@ -1,0 +1,62 @@
+package org.tap.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+	
+public class Inserting_New_Row {
+	
+	private static final String URL="jdbc:mysql://localhost:3306/tapjdbc";
+	private static final String USER = "root";
+	private static final String PASSWORD = "Arshu@321";
+	private static final String INSERT_ROW_EMPLOYEE ="INSERT INTO `employee`(`id`,`name`,`email`,`dept`,`salary`)"
+			+ "VALUES('06','Arshad','Arshad@gmail.com','IT','35000')";
+	
+	
+	public static void main(String[] args) {
+		Connection con=null;
+		Statement stmt=null;
+		try {
+			//Loading the Driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			//Connecting DataBase
+			con= DriverManager.getConnection(URL,USER,PASSWORD);
+			
+			//Creating Statement
+			stmt=con.createStatement();
+			
+			//Execute Query
+			int result=stmt.executeUpdate(INSERT_ROW_EMPLOYEE);
+			
+			System.out.println(result);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(stmt!=null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}
+ 	
