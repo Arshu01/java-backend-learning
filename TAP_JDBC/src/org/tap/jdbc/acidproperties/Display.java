@@ -23,6 +23,8 @@ public class Display {
 				
 				System.out.printf("%-3d %-7s %-22s %-9s %d\n",id,name,email,dept,salary);
 			}
+			  result.close();
+		      psmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
