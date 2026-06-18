@@ -1,16 +1,17 @@
-package org.tap.jdbc;
+package org.tap.jdbc.statement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 	
-public class Deleting_Row {
+public class Inserting_New_Row {
 	
 	private static final String URL="jdbc:mysql://localhost:3306/tapjdbc";
 	private static final String USER = "root";
 	private static final String PASSWORD = "Arshu@321";
-	private static final String DELETE_ROW_EMPLOYEE ="DELETE FROM `employee` WHERE `id`=6 ";
+	private static final String INSERT_ROW_EMPLOYEE ="INSERT INTO `employee`(`id`,`name`,`email`,`dept`,`salary`)"
+			+ "VALUES('06','Arshad','Arshad@gmail.com','IT','35000')";
 	
 	
 	public static void main(String[] args) {
@@ -27,7 +28,7 @@ public class Deleting_Row {
 			stmt=con.createStatement();
 			
 			//Execute Query
-			int result=stmt.executeUpdate(DELETE_ROW_EMPLOYEE);
+			int result=stmt.executeUpdate(INSERT_ROW_EMPLOYEE);
 			
 			System.out.println(result);
 			

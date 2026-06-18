@@ -1,4 +1,4 @@
-package org.tap.jdbc;
+package org.tap.jdbc.statement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

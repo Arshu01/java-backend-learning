@@ -1,41 +1,42 @@
-package org.tap.jdbc;
+package org.tap.jdbc.statement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 	
-public class Inserting_New_Row {
-	
+public class Fetch_Data{
 	private static final String URL="jdbc:mysql://localhost:3306/tapjdbc";
 	private static final String USER = "root";
 	private static final String PASSWORD = "Arshu@321";
-	private static final String INSERT_ROW_EMPLOYEE ="INSERT INTO `employee`(`id`,`name`,`email`,`dept`,`salary`)"
-			+ "VALUES('06','Arshad','Arshad@gmail.com','IT','35000')";
-	
-	
+	private static final String FETCH_DATA ="SELECT * FROM employee";
 	public static void main(String[] args) {
 		Connection con=null;
 		Statement stmt=null;
 		try {
-			//Loading the Driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			//Connecting DataBase
 			con= DriverManager.getConnection(URL,USER,PASSWORD);
 			
-			//Creating Statement
 			stmt=con.createStatement();
+			ResultSet result=stmt.executeQuery(FETCH_DATA);
 			
-			//Execute Query
-			int result=stmt.executeUpdate(INSERT_ROW_EMPLOYEE);
-			
-			System.out.println(result);
+			while(result.next()) {
+				int id=result.getInt("id");
+				String name=result.getString("name");
+				String email=result.getString("email");
+				String dept=result.getString("dept");
+				int salary=result.getInt("salary");
+//				System.out.println(id+" "+name+" "+email+" "+dept+" "+salary);
+				
+				System.out.printf("%-3d %-7s %-22s %-9s %d\n",id,name,email,dept,salary);
+			}
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -60,3 +61,4 @@ public class Inserting_New_Row {
 	}
 }
  	
+
