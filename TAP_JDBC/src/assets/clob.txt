@@ -1,0 +1,3 @@
+JDBC (Java Database Connectivity) is an API that enables Java applications to interact with databases. It provides methods to establish a connection, execute SQL queries, retrieve data, and update records. JDBC acts as a bridge between Java programs and database systems such as MySQL, Oracle, and PostgreSQL.
+Using JDBC, developers can perform CRUD operations (Create, Read, Update, Delete) efficiently. It supports PreparedStatement, CallableStatement, and ResultSet for secure and optimized database operations.
+JDBC is widely used in enterprise applications and serves as the foundation for frameworks such as Hibernate and Spring Data JPA.
