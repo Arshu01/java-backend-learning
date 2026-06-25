@@ -11,7 +11,7 @@ public class  Deleting_Row {
 	private static final String URL="jdbc:mysql://localhost:3306/tapjdbc";
 	private static final String USER = "root";
 	private static final String PASSWORD = "Arshu@321";
-	private static final String UPDATE_ROW_EMPLOYEE ="DELETE FROM `employee` WHERE `id`=? ";
+	private static final String DELETE_ROW_EMPLOYEE ="DELETE FROM `employee` WHERE `id`=? ";
 	
 	
 	public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class  Deleting_Row {
 			con= DriverManager.getConnection(URL,USER,PASSWORD);
 			
 			//Creating PreparedStatement
-			psmt=con.prepareStatement(UPDATE_ROW_EMPLOYEE);
+			psmt=con.prepareStatement(DELETE_ROW_EMPLOYEE);
 			System.out.print("Enter id: ");
 			int id=scan.nextInt();
 			psmt.setInt(1,id);
